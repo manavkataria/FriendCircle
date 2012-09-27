@@ -1,0 +1,188 @@
+
+<html xmlns:fb="http://ogp.me/ns/fb#">
+  <head>
+  	<link rel="stylesheet" href="main.css"/>
+   <title>Friend Circle</title>    
+    <script type="text/javascript" src="library/jquery/jquery.js"></script>
+    <script type="text/javascript" src="library/raphael/raphael.js"></script>
+    <script type="text/javascript" src="library/friendcircle.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready (function () {
+      Graph.initiate("Graph", 400, 500);
+      Debug.initiate("Debug");
+      Graph.createCenter();
+      Graph.drawFriendCircles(friendCircleClickHandler);
+
+    });
+    </script>
+  </head>
+  <body>
+	
+	<div id="fb-root"></div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '101772633223922', // App ID
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+        // listen for and handle auth.statusChange events
+        FB.Event.subscribe('auth.statusChange', function(response) {
+//			console.log(response);
+          if (response.authResponse) {
+            // user has auth'd your app and is logged into Facebook
+            FB.api('/me', function(me){
+			console.log(response);
+            if (response.status=="connected") {
+                console.log(response);
+                Debug.log("Logged In");
+                initiateLoads();
+            } else {
+                // The user has logged out, and the cookie has been cleared
+				console.log(response);
+                document.location = document.reload(true);
+            }
+            });
+            document.getElementById('auth-loggedout').style.display = 'none';
+            document.getElementById('auth-loggedin').style.display = 'block';
+          } else {
+            // user has not auth'd your app, or is not logged into Facebook
+            document.getElementById('auth-loggedout').style.display = 'block';
+            document.getElementById('auth-loggedin').style.display = 'none';
+          }
+        });
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+    <div class="container">
+      <table cellpadding=0 cellspacing=0 border=0 width="100%">
+      	<tr>
+        	<td colspan="2">
+            	<img src="images/logo.jpg"/>
+            	
+            </td>
+        </tr>
+        <tr>
+          <td valign="top" width="400px">
+            
+            <div id="Graph"></div>
+            <div id="Debug"></div>
+          </td>
+          <td valign="top">
+            <div style="border-radius:2px;background:#fff; padding:15px;">
+				<fb:login-button scope="read_stream,user_photo_video_tags,user_photos,friends_about_me,user_status,friends_status" show-faces="true" width="200" max-rows="1"></fb:login-button>
+            </div>            
+            <div id="feed"></div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript">
+        var feedContainer = document.getElementById("feed");
+//        addFeed("123", "Hi IIalal", "Nauam");
+      </script>
+      <script src="library/domCreator.js"></script>
+    </div>
+    <script>
+ /*    // Init the SDK upon load
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '101772633223922', // App ID
+          //channelUrl : '//'+window.location.hostname+'/channel.html', // Path to your Channel File
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+
+        // listen for and handle auth.statusChange events
+        FB.Event.subscribe('auth.authResponseChange', function(response) {
+          if (response.authResponse) {
+            // user has auth'd your app and is logged into Facebook
+            FB.api('/me', function(me){
+              if (me.name) {
+                document.getElementById('auth-displayname').innerHTML = me.name;
+              }
+            })
+            document.getElementById('auth-loggedout').style.display = 'none';
+            document.getElementById('auth-loggedin').style.display = 'block';
+          } else {
+            // user has not auth'd your app, or is not logged into Facebook
+            document.getElementById('auth-loggedout').style.display = 'block';
+            document.getElementById('auth-loggedin').style.display = 'none';
+          }
+        });
+
+        // respond to clicks on the login and logout links
+        document.getElementById('auth-loginlink').addEventListener('click', function(){
+          FB.login();
+        });
+        document.getElementById('auth-logoutlink').addEventListener('click', function(){
+          FB.logout();
+        }); 
+      } 
+*/    </script>
+
+<!--
+    <h1>Facebook Client-side Authentication Example</h1>
+      <div id="auth-status">
+        <div id="auth-loggedout">
+          <a href="#" id="auth-loginlink">Login</a>
+        </div>
+        <div id="auth-loggedin" style="display:none">
+          Hi, <span id="auth-displayname"></span>  
+        (<a href="#" id="auth-logoutlink">logout</a>)
+      </div>
+    </div>
+-->
+
+  
+  <script type="text/javascript">
+/*        FB.init({appId: '101772633223922', channel:'https://friendcircle.shareyou.webfactional.com/channel.html', status: true, cookie: false, xfbml: true});
+        FB.Event.subscribe('auth.statusChange', function(response) {
+			console.log("response");
+            if (response.session) {
+                console.log(response);
+                Debug.log("Logged In");
+                initiateLoads();
+            } else {
+                // The user has logged out, and the cookie has been cleared
+				console.log(response);
+                document.location = document.reload(true);
+            }
+        // respond to clicks on the login and logout links
+        document.getElementById('auth-loginlink').addEventListener('click', function(){
+          FB.login();
+        });
+        document.getElementById('auth-logoutlink').addEventListener('click', function(){
+          FB.logout();
+        }); 
+        });
+*/
+    </script>
+    <script type="text/javascript" src="library/loader.js"></script>
+
+<!--
+	<h1>Facebook Client-side Authentication Example</h1>
+      <div id="auth-status">
+        <div id="auth-loggedout">
+          <a href="javascript:FB.login()" id="auth-loginlink">Login</a>
+        </div>
+        <div id="auth-loggedin" style="display:none">
+          Hi, <span id="auth-displayname"></span>  
+        (<a href="#" id="auth-logoutlink">logout</a>)
+      </div>
+    </div>
+-->
+  </body>
+</html>

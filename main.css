@@ -1,0 +1,119 @@
+body {
+		margin:0;
+		padding:0;
+		height:100%;
+		background: #26323e;
+		font-family:"Trebuchet MS", Helvetica, Verdana, Arial, sans-serif;
+		color: #FFFFFF;
+	}
+	h1 {
+/*		font-family:Calluna, Georgia, "Times New Roman", Times, serif;*/
+		font-size:85px;
+		padding:10px;
+	}
+	td {
+		padding: 4px;
+	}
+	.container {
+		max-width: 1000px;
+		margin:auto;
+		padding: 5px;
+	}
+    .debugList {
+      padding: 0;
+      margin:0;
+      list-style-type:none;
+      border:1px #456789 solid;
+      background: #395b76;
+      color: #395b76;
+      padding:3px;
+      font-family: Consolas, monospace;
+      font-size:small;
+      height:500px;
+      overflow:auto;
+    }
+    .debugList li{
+      margin-top:3px;
+      background:#7595af;
+      padding:3px;
+    }
+	#feed {
+		background:#26323e;
+		color:#FFF;
+		font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+   	    margin:0 0 0 0;
+		size:14px;
+		height:80%;
+	}
+    .feedList {
+      list-style-type:none;
+      padding:3px;
+      font-size:small;
+      height:auto;
+      overflow:auto;
+    }
+    .feedList li{
+      margin-top:3px;
+      padding:3px;
+    }	
+	.thmb {
+		width:70px;
+		height:80px;
+        margin:0px 0 5px 5px;
+		background-color:#FFF;
+		vertical-align:top;
+		float:left;
+		margin-right:5px;
+	}
+	.chat-person {
+		font-weight:bolder;
+		padding-bottom:0px;
+		border-bottom: 1px #ffffff solid;
+		margin-bottom:8px;
+	}
+.chat-bubble {
+  background-color:#395b76;
+  line-height:1.3em;
+  margin:0px 10px 10px 100px;
+  padding:10px;
+  position:relative;
+  width:auto;
+  -webkit-border-radius:10px;
+	  -moz-border-radius:7px;
+	  -moz-box-shadow:rgba(0,0,0,0.5) 5px 4px 5px;
+}
+ 
+.chat-bubble-arrow-border {
+  border-color: transparent #395b76 transparent transparent;
+  border-style: solid;
+  border-width: 10px;
+  height:0;
+  width:0;
+  position:absolute;
+  left:-20px;
+  top:10px;
+}
+ 
+.chat-bubble-arrow {
+  border-color: transparent transparent transparent transparent;
+  border-style: solid;
+  border-width: 0px;
+  height:0;
+  width:0;
+  position:absolute;
+  left:-19px;
+  top:10px;
+}
+			/* Styles specific to this particular page */
+
+			.scroll-pane
+			{
+				width: 100%;
+				height: 200px;
+				overflow: auto;
+			}
+			.horizontal-only
+			{
+				height: auto;
+				max-height: 200px;
+			}
